@@ -33,4 +33,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: artifact.jar
-        path: github-actions-java-maven/target/github-actions-java-maven.jar
+        path: java-gh-actions/target/spring-boot-hello-world-example-0.0.1-SNAPSHOT.jar
