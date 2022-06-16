@@ -86,5 +86,12 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
+	<distributionManagement>
+	  <repository>
+	    <id>codeartifact</id>
+	    <name>codeartifact</name>
+	    <url>https://poc-420928831421.d.codeartifact.us-east-1.amazonaws.com/maven/poc/</url>
+	  </repository>
+	</distributionManagement>
 
 </project>
