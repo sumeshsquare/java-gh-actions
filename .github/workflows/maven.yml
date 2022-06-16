@@ -53,7 +53,7 @@ jobs:
         name: artifact
         path: artifacts
 
-    - name: "Configure AWS Credentials" Action For GitHub Actions
+    - name: "Configure AWS Credentials"
       # You may pin to the exact commit or the version.
       # uses: aws-actions/configure-aws-credentials@05b148adc31e091bafbaf404f745055d4d3bc9d2
       uses: aws-actions/configure-aws-credentials@v1
