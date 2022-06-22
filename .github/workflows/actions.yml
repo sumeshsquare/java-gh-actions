@@ -40,6 +40,15 @@ jobs:
         repo-domain: poc
         account-number: ${{ secrets.AWS_ACCOUNT_ID }}
         settings-xml-path: /home/runner/settings.xml
+        
+    - name: AWS CodeArtifact Auth
+      uses: advancedcsg-open/actions-aws-codeartifact-auth@v1.0.0
+      with:
+        region: ${{ secrets.AWS_REGION }}
+        domain: poc
+        domain-owner: ${{ secrets.AWS_ACCOUNT_ID }}
+        duration: 900
+
 
     - name: Build with Maven
       run: |
