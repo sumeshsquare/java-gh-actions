@@ -46,11 +46,12 @@ jobs:
       run: |
              mvn -s settings.xml clean package deploy
              
-    - name: SCP Upload
-      uses: betanzos/scp-upload@v1
+    - name: SSH Execute Commands
+      uses: JimCronqvist/action-ssh@0.1.1
       with:
-        source: target/*.jar
-        host: 54.80.53.41
-        username: ec2-user
-        key: ${{ secrets.PEM_KEY }}
-        remote_dir: /home/ec2-user/target
+        command: |
+                echo "Deploy"
+                echo "Deploy2"
+        hosts: 54.80.53.41
+        privateKey: ${{ secrets.PEM_KEY }}
+
