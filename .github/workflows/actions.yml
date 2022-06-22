@@ -58,12 +58,3 @@ jobs:
         user: ec2-user
         key: ${{ secrets.AWS_EC2_PEM_KEY }}
 
-#     - name: SSH Execute Commands
-#       uses: JimCronqvist/action-ssh@0.1.1
-#       with:
-#         command: |
-#                 cd /home/ec2-user/java-gh-actions
-#                 mvn -s settings.xml clean package
-#         hosts: ${{ secrets.AWS_EC2_USER_HOST }}
-#         privateKey: ${{ secrets.AWS_EC2_PEM_KEY }}
-
