@@ -25,7 +25,7 @@ jobs:
         cache: maven
         
     - name: Test with Maven
-      run: mvn clean test
+      run: mvn clean verify
       
     - name: "Configure AWS Credentials"
       uses: aws-actions/configure-aws-credentials@v1
