@@ -8,7 +8,9 @@ on:
     
   workflow_dispatch:
      inputs:
-        DATA: 'Help'
+        DATA:
+          description: 'Log level'
+          default: 'Help'
         
 env:
   DATA_ENV : ${{ github.event.inputs.DATA }}
