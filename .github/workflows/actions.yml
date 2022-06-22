@@ -32,15 +32,15 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
-        
-    - name: AWS CodeArtifact Auth
-      uses: advancedcsg-open/actions-aws-codeartifact-auth@v1.0.0
+          
+    - name: aws-codeartifact-mvn-login
+      uses: lonewolfworks/aws-codeartifact-mvn-login@v1.0.5
       with:
-        region: ${{ secrets.AWS_REGION }}
-        domain: poc
-        domain-owner: ${{ secrets.AWS_ACCOUNT_ID }}
-        duration: 900
-        
+        repo-name: poc
+        repo-domain: poc
+        account-number: ${{ secrets.AWS_ACCOUNT_ID }}
+        #settings-xml-path: # optional, default is /home/runner/.m2/settings.xml
+
     - name: Build with Maven
       run: |
              mvn -s settings.xml clean package deploy
@@ -54,4 +54,5 @@ jobs:
         host: ${{ secrets.AWS_EC2_HOST }}
         user: ec2-user
         key: ${{ secrets.AWS_EC2_PEM_KEY }}
+  
 
