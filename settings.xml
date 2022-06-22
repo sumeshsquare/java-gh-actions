@@ -3,7 +3,7 @@
     <server>
       <id>codeartifact</id>
       <username>aws</username>
-      <password>${env.CODEARTIFACT_AUTH_TOKEN}</password>
+      <password>${env.MAVEN_PASSWORD}</password>
     </server>
   </servers>
 </settings>
