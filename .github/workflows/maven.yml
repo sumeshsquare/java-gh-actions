@@ -5,9 +5,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "feature-1" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "feature-1" ]
     
   workflow_dispatch:
     inputs:
