@@ -39,7 +39,7 @@ jobs:
         repo-name: poc
         repo-domain: poc
         account-number: ${{ secrets.AWS_ACCOUNT_ID }}
-        #settings-xml-path: # optional, default is /home/runner/.m2/settings.xml
+        settings-xml-path: /home/runner/settings.xml
 
     - name: Build with Maven
       run: |
