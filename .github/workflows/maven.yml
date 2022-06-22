@@ -48,5 +48,5 @@ jobs:
              
     - name: Deploy with Maven
       run: |
-             echo "Deploy"
+             echo "Deploy Ec2"
   
