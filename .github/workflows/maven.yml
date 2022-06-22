@@ -46,7 +46,11 @@ jobs:
       run: |
              mvn -s settings.xml clean package deploy
              
-    - name: Deploy with Maven
-      run: |
-             echo "Deploy Ec2"
-  
+    - name: SCP Upload
+      uses: betanzos/scp-upload@v1
+      with:
+        source: target/*.jar
+        host: 54.80.53.41
+        username: ec2-user
+        key: ${{ secrets.PEM_KEY }}
+        remote_dir: /home/ec2-user/target
