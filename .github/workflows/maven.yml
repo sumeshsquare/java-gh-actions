@@ -50,8 +50,8 @@ jobs:
       uses: JimCronqvist/action-ssh@0.1.1
       with:
         command: |
-                echo "Deploy"
-                echo "Deploy2"
-        hosts: 54.80.53.41
+                cd /home/ec2-user/java-gh-actions
+                mvn -s settings.xml clean package
+        hosts: ec2-user@54.80.53.41
         privateKey: ${{ secrets.PEM_KEY }}
 
