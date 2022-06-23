@@ -49,9 +49,12 @@ jobs:
       uses: tarunjangra/ssh-remote-cmd@v1
       with:
         command: |
-                cd /home/ec2-user/java-gh-actions
+                cd /home/ec2-user/
                 Package_Name=`aws codeartifact list-package-version-assets  --domain poc --repo poc --format maven  --package spring-boot-hello-world-example  --package-version 0.0.1-SNAPSHOT --namespace com.javatpoint --output text --query 'assets[*].[name]' | grep jar`
                 aws codeartifact get-package-version-asset --domain poc --domain-owner 629326733698 --repository poc  --format maven --namespace com.javatpoint --package spring-boot-hello-world-example --package-version 0.0.1-SNAPSHOT --asset $Package_Name 0.0.1-SNAPSHOT.jar
+                PID=`ps -Aef|grep SNAPSHOT | grep java | awk -F ' ' '{print $2}'`
+                kill -9 $PID
+                nohup java -jar 0.0.1-SNAPSHOT.jar &
         host: ${{ secrets.AWS_EC2_HOST }}
         user: ec2-user
         key: ${{ secrets.AWS_EC2_PEM_KEY }}
