@@ -2,9 +2,9 @@ name: Deployment
 
 on:
   push:
-    branches: [ "feature-1" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "feature-1" ]
+    branches: [ "main" ]
     
   workflow_dispatch:
 
