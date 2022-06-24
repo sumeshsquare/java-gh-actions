@@ -7,6 +7,11 @@ on:
     branches: [ "main" ]
     
   workflow_dispatch:
+    inputs:
+      releaseType:
+        description: 'Where to release (qa or prod)'
+        required: true
+        default: 'qa'
 
 jobs:
   deploy-dev:
@@ -59,6 +64,7 @@ jobs:
         key: ${{ secrets.AWS_EC2_PEM_KEY }}
   
   deploy-qa:
+    if: github.event.inputs.releaseType == 'prod'
     runs-on: ubuntu-latest
     needs: deploy-dev
     steps:
