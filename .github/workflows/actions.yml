@@ -9,10 +9,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-
+  deploy-dev:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     
@@ -25,7 +23,7 @@ jobs:
         
     - name: Verify with Maven
       run: mvn clean verify
-      
+
     - name: "Configure AWS Credentials"
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -45,7 +43,27 @@ jobs:
       run: |
              mvn -s settings.xml clean package deploy
              
-    - name: SSH to EC2
+    - name: SSH to EC2 - DEV
+      uses: tarunjangra/ssh-remote-cmd@v1
+      with:
+        command: |
+                cd /home/ec2-user/
+                Package_Name=`aws codeartifact list-package-version-assets  --domain poc --repo poc --format maven  --package spring-boot-hello-world-example  --package-version 0.0.1-SNAPSHOT --namespace com.javatpoint --output text --query 'assets[*].[name]' | grep jar`
+                aws codeartifact get-package-version-asset --domain poc --domain-owner 629326733698 --repository poc  --format maven --namespace com.javatpoint --package spring-boot-hello-world-example --package-version 0.0.1-SNAPSHOT --asset $Package_Name 0.0.1-SNAPSHOT.jar
+                PID=`ps -Aef|grep SNAPSHOT | grep java | awk -F ' ' '{print $2}'`
+                kill -9 $PID
+                #nohup java -jar 0.0.1-SNAPSHOT.jar &
+                nohup java -jar 0.0.1-SNAPSHOT.jar >/dev/null &
+        host: ${{ secrets.AWS_EC2_HOST }}
+        user: ec2-user
+        key: ${{ secrets.AWS_EC2_PEM_KEY }}
+  
+  deploy-qa:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: SSH to EC2 - QA
       uses: tarunjangra/ssh-remote-cmd@v1
       with:
         command: |
