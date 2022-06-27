@@ -27,7 +27,7 @@
         </repository>
         <repository>
           <id>github</id>
-          <url>https://maven.pkg.github.com/OWNER/REPOSITORY</url>
+          <url>https://maven.pkg.github.com/sumeshsquare/sample-poc</url>
           <snapshots>
             <enabled>true</enabled>
           </snapshots>
