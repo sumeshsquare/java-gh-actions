@@ -45,9 +45,9 @@ jobs:
 #         duration: 900
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s settings.xml
+      run: mvn -s settings.xml clean package deploy
       env:
-        GITHUB_TOKEN: ${{ github.token }}
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
 #     - name: Build & Upload to CodeArtifact with Maven
 #       run: |
