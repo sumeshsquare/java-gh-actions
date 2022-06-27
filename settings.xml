@@ -27,7 +27,7 @@
         </repository>
         <repository>
           <id>github</id>
-          <url>https://maven.pkg.github.com/sumeshsquare/sample-poc</url>
+          <url>https://maven.pkg.github.com/sumeshsquare/java-gh-actions</url>
           <snapshots>
             <enabled>true</enabled>
           </snapshots>
