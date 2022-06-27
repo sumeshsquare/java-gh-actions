@@ -52,7 +52,7 @@ jobs:
 #         duration: 900
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn -s settings.xml clean package deploy
+      run: mvn -s settings.xml deploy
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
